@@ -10,6 +10,7 @@ public class PlayerMouvementSpline : MonoBehaviour
 
     public float currentSpeed = 1f;
     public float speedAcceleration = 1f;
+    public float speedDecceleration = 1f;
     public float maxSpeed = 50f;
 
     float distancePercentage = 0f;
@@ -26,6 +27,7 @@ public class PlayerMouvementSpline : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        distancePercentage += currentSpeed * Time.deltaTime / splineLength;
         currentSpeed += speedAcceleration * Time.deltaTime;
 
         if (currentSpeed > maxSpeed)
@@ -37,12 +39,16 @@ public class PlayerMouvementSpline : MonoBehaviour
             currentSpeed = -maxSpeed;
         }
 
-        distancePercentage += currentSpeed * Time.deltaTime / splineLength;
+        KeyDown();
 
         Debug.Log(distancePercentage);
         Debug.Log(splineLength);
 
-        if (Input.GetKeyDown("space")) 
+
+    }
+    private void KeyDown()
+    {
+        if (Input.GetKeyDown("space"))
         {
 
             isSwitched = !isSwitched;
@@ -60,7 +66,7 @@ public class PlayerMouvementSpline : MonoBehaviour
 
         }
 
-        else 
+        else
         {
             Vector3 currentPosition = spline.EvaluatePosition(distancePercentage);
             transform.position = currentPosition;
