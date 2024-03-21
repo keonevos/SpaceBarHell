@@ -2252,5 +2252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155b67ef7ffe3724c9b9cbb52db2fe84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spline: {fileID: 0}
-  speed: 4
+  spline: {fileID: 1766555533}
+  currentSpeed: 1
+  speedAcceleration: 3.44
+  maxSpeed: 50
