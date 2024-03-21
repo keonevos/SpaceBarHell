@@ -25,26 +25,25 @@ public class PlayerMouvementSpline : MonoBehaviour
 
         Debug.Log(distancePercentage);
         Debug.Log(splineLength);
-        if (isSwitched == false && Input.GetKeyDown("space")) 
+
+        if (Input.GetKeyDown("space")) 
         {
-            isSwitched = true;
+
+            isSwitched = !isSwitched;
             speed = -speed;
             Vector3 currentPosition = spline.EvaluatePosition(distancePercentage);
             transform.position = currentPosition;
         }
 
-        if (isSwitched == true && distancePercentage < 0.05f)
+        if (isSwitched == true && distancePercentage < -0.001f)
             {
                 distancePercentage = 1f;
 
             }
-        if (isSwitched == true && Input.GetKeyDown("space"))
-        {
-            isSwitched= false;
-        }
-        else
-        {
 
+
+        else 
+        {
             Vector3 currentPosition = spline.EvaluatePosition(distancePercentage);
             transform.position = currentPosition;
 
