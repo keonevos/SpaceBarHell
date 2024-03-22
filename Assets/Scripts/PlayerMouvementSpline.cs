@@ -27,6 +27,7 @@ public class PlayerMouvementSpline : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         distancePercentage += currentSpeed * Time.deltaTime / splineLength;
         currentSpeed += speedAcceleration * Time.deltaTime;
 
