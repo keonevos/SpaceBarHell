@@ -10,7 +10,7 @@ public class PlayerMouvementSpline : MonoBehaviour
 
     public float currentSpeed = 1f;
     public float speedAcceleration = 1f;
-    public float speedDecceleration = 1f;
+    public float speedDecceleration = -1f;
     public float maxSpeed = 50f;
 
     float distancePercentage = 0f;
@@ -42,14 +42,14 @@ public class PlayerMouvementSpline : MonoBehaviour
 
         KeyDown();
 
-        Debug.Log(distancePercentage);
-        Debug.Log(splineLength);
+        //Debug.Log(distancePercentage);
+        //Debug.Log(splineLength);
 
 
     }
     private void KeyDown()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
 
             isSwitched = !isSwitched;

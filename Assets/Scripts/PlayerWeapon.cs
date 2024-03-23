@@ -5,17 +5,52 @@ using UnityEngine;
 public class PlayerWeapon : MonoBehaviour
 {
     public Transform bulletSpawnPoint;
-    public PlayerBulletScript m_bullet;
+    [SerializeField] private PlayerBulletScript m_bullet;
+
+    [SerializeField] private PlayerBulletScript m_superBullet;
+    [SerializeField] private float chargeSpeed = 1f;
+    [SerializeField] private float chargeNeeded = 2f;
+    [SerializeField] private float chargeTime;
+    private bool isCharging;
+
+
     public Transform m_enemy;
 
     public float spawnCoroutineSecondRate = 1f;
+
     private void Awake()
     {
         StartCoroutine(Spawner());
     }
     void Update()
     {
+        if (Input.GetKey(KeyCode.Space) && chargeTime < chargeNeeded) 
+        {
+            isCharging = true;
+            if (isCharging)
+            {
+                 chargeTime += chargeSpeed * Time.deltaTime;
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            if (chargeTime > chargeNeeded)
+            {
+                SuperCharge();
+            }
+            else if (chargeTime < chargeNeeded) 
+            {
+                chargeTime = 0f;
+            }
+        }
+    }
 
+    private void SuperCharge()
+    {
+        PlayerBulletScript newSuperBullet = Instantiate(m_superBullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        newSuperBullet.Shoot(m_enemy.transform.position);
+        isCharging = false;
+        chargeTime = 0f;
     }
     IEnumerator Spawner()
     {
