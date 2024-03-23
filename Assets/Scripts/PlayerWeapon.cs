@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
 {
+
+    [Header("Bullet Setting")]
     public Transform bulletSpawnPoint;
     [SerializeField] private PlayerBulletScript m_bullet;
-
     [SerializeField] private PlayerBulletScript m_superBullet;
     [SerializeField] private float chargeSpeed = 1f;
     [SerializeField] private float chargeNeeded = 2f;
     [SerializeField] private float chargeTime;
     private bool isCharging;
+    public float spawnCoroutineSecondRate = 1f;
 
-
+    [Header("Enemy")]
     public Transform m_enemy;
 
-    public float spawnCoroutineSecondRate = 1f;
+    [Header("TimerManagement")]
+    public TimeManager TimeManager;
+    public Camera m_camera;
 
     private void Awake()
     {
@@ -29,7 +33,8 @@ public class PlayerWeapon : MonoBehaviour
             isCharging = true;
             if (isCharging)
             {
-                 chargeTime += chargeSpeed * Time.deltaTime;
+                TimeManager.Slowmotion();
+                chargeTime += chargeSpeed * Time.deltaTime;
             }
         }
         if (Input.GetKeyUp(KeyCode.Space))
