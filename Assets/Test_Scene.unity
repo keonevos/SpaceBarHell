@@ -2803,13 +2803,15 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 1456199131}
   m_bullet: {fileID: 295178891395232139, guid: 2fbc9095ac4abef408bf6d1b941b4560, type: 3}
   m_superBullet: {fileID: 295178891395232139, guid: 0712fb17a0cf15a4393baa61e1bd7166, type: 3}
-  chargeSpeed: 2
+  chargeSpeed: 10
   chargeNeeded: 2
   chargeTime: 0
+  isCharging: 0
   spawnCoroutineSecondRate: 0.15
   m_enemy: {fileID: 343585449}
   TimeManager: {fileID: 1387251663}
   m_camera: {fileID: 1534850752}
+  decay: 0.5
 --- !u!1 &2128584154
 GameObject:
   m_ObjectHideFlags: 0
