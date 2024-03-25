@@ -2772,7 +2772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spline: {fileID: 1606093851}
   currentSpeed: 1
-  speedAcceleration: 0.32
+  speedAcceleration: 0.1
   speedDecceleration: 1
   maxSpeed: 50
 --- !u!114 &1826906500
