@@ -24,10 +24,14 @@ public class PlayerWeapon : MonoBehaviour
     public Camera m_camera;
     public float decay = 1f;
     private float Timedecay;
+    private float targetOtrhographicSize;
+    private float cameraSizeSmoothness;
 
     private void Awake()
     {
         StartCoroutine(Spawner());
+        targetOtrhographicSize = 5;
+        cameraSizeSmoothness = 1;
     }
     void Update()
     {
@@ -44,8 +48,10 @@ public class PlayerWeapon : MonoBehaviour
 
             if (isCharging && Timedecay < 0)
             {
+               targetOtrhographicSize = 3;
                TimeManager.Slowmotion();
                chargeTime += chargeSpeed * Time.deltaTime;
+               m_camera.orthographicSize = Mathf.Lerp(m_camera.orthographicSize, targetOtrhographicSize, cameraSizeSmoothness * Time.deltaTime);
             }
             
         }
@@ -60,6 +66,7 @@ public class PlayerWeapon : MonoBehaviour
                 Timedecay = decay;
                 isCharging = false;
                 chargeTime = 0f;
+                m_camera.orthographicSize = 5;
             }
         }
 
@@ -72,6 +79,7 @@ public class PlayerWeapon : MonoBehaviour
         isCharging = false;
         chargeTime = 0f;
         Timedecay = decay;
+        m_camera.orthographicSize = 5;
     }
     IEnumerator Spawner()
     {
