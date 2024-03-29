@@ -7,10 +7,9 @@ public class PlayerBulletScript : MonoBehaviour
     private Rigidbody2D rb;
     public float bulletSpeed = 1f;
     public Vector2 randomAccuracy;
-    private void Start()
-    {
-      
-    }
+
+    public int scorePoint;
+
 
     public void Shoot(Vector3 targetPos) // Merci Alexandrine Fabien pour le morceau en dessous
     {
@@ -24,6 +23,12 @@ public class PlayerBulletScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
+        {
+            ScoreManager.instance.AddScore(scorePoint);
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag == "Destroyer")
         {
             Destroy(gameObject);
         }
