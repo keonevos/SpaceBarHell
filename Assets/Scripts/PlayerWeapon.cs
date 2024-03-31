@@ -27,11 +27,24 @@ public class PlayerWeapon : MonoBehaviour
     private float targetOtrhographicSize;
     private float cameraSizeSmoothness;
 
+    [Header("Audio")]
+    public GameObject m_bulletAudio;
+    public GameObject m_superBulletAudio;
+    private AudioSource supershootAudio;
+    private AudioSource shootAudio;
+    private bool isShooting = false;
+
     private void Awake()
     {
         StartCoroutine(Spawner());
         targetOtrhographicSize = 5;
         cameraSizeSmoothness = 1;
+    }
+
+    private void Start()
+    {
+        shootAudio = m_bulletAudio.GetComponentInChildren<AudioSource>();
+        supershootAudio = m_superBulletAudio.GetComponentInChildren<AudioSource>();
     }
     void Update()
     {
@@ -70,12 +83,19 @@ public class PlayerWeapon : MonoBehaviour
             }
         }
 
+        if (isShooting == true) 
+        {
+            shootAudio.Play();
+            isShooting = !isShooting;
+        }
+
     }
 
     private void SuperCharge()
     {
         PlayerBulletScript newSuperBullet = Instantiate(m_superBullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         newSuperBullet.Shoot(m_enemy.transform.position);
+        supershootAudio.Play();
         isCharging = false;
         chargeTime = 0f;
         Timedecay = decay;
@@ -83,6 +103,7 @@ public class PlayerWeapon : MonoBehaviour
     }
     IEnumerator Spawner()
     {
+        isShooting = true;
         PlayerBulletScript newBullet = Instantiate(m_bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation); // Spawn les balles par rapport au spawn point
         newBullet.Shoot(m_enemy.transform.position); // Target la position de l'ennemi
         yield return new WaitForSeconds(spawnCoroutineSecondRate);
