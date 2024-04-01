@@ -22,13 +22,13 @@ public class PlayerBulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             ScoreManager.instance.AddScore(scorePoint);
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.tag == "Destroyer")
+        if (collision.gameObject.CompareTag("Destroyer"))
         {
             Destroy(gameObject);
         }
