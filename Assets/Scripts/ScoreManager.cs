@@ -19,7 +19,7 @@ public class ScoreManager : MonoBehaviour
     }
     void Start()
     {
-        scoreText.text = "SCORE  : " + score.ToString();
+        scoreText.text = score.ToString();
         highscoreText.text = "HIGHSCORE  : " + score.ToString();
     }
 
@@ -27,7 +27,7 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int inputScore)
     {
         score += inputScore;
-        scoreText.text = "SCORE  : " + score.ToString();
+        scoreText.text = score.ToString();
         highscoreText.text = "HIGHSCORE  : " + score.ToString();
     }
 }
