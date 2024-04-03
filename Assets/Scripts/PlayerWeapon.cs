@@ -55,7 +55,7 @@ public class PlayerWeapon : MonoBehaviour
             
             if (isCharging && Timedecay > 0)
             {
-                Debug.Log("temps");
+                //Debug.Log("temps");
                 Timedecay -= Time.deltaTime;
             }
 

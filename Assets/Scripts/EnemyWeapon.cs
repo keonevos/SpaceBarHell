@@ -25,7 +25,7 @@ public class EnemyWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(decay);
+        //Debug.Log(decay);
         timer += Time.deltaTime;
         if (spawnerType == SpawnerType.Spin && decay >= 0f && spinSwitch == false)
         {

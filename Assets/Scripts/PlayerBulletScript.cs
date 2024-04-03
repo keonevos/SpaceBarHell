@@ -19,7 +19,7 @@ public class PlayerBulletScript : MonoBehaviour
         rb.velocity = dir.normalized * bulletSpeed; // Normaliser la velocité
 
     }
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
