@@ -19,7 +19,7 @@ public class PlayerStats : MonoBehaviour
         lifePoint -= hitPoint;
         if (lifePoint <= 0)
         {
-            SceneManager.LoadScene("Test_scene");
+            SceneManager.LoadScene("Start_menu");
         }
     }
 }
