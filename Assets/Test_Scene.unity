@@ -586,9 +586,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_enemybullet: {fileID: 1589261651534326912, guid: fbc4c67714cbe6c45bfe26249e975d13, type: 3}
-  speed: 3.5
-  spawnerType: 1
-  firingRate: 0.1
+  speed: 1.76
+  spinSpeed: 55
+  firingHellRate: 0.03
+  isSpinHellActive: 0
+  spinSpeedHeaven: 2
+  firingRate: 0.09
+  isSpinHeavenActive: 0
 --- !u!1 &378147599
 GameObject:
   m_ObjectHideFlags: 0
@@ -10210,7 +10214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2071850707915671088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.012, z: 0}
+  m_LocalPosition: {x: 0, y: -0.066, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10251,7 +10255,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.03
+  m_Radius: 0.06
 --- !u!4 &3123075737099752818
 Transform:
   m_ObjectHideFlags: 0
@@ -84070,7 +84074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba078c3622d53dc42842c5def518a581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifePoint: 8
+  lifePoint: 308
   m_hitAudio: {fileID: 1602295909}
   m_animatorVisual: {fileID: 7157587096427034007}
   HitPlayer: {fileID: 8181170193692638577}
