@@ -45,7 +45,7 @@ public class PlayerStats : MonoBehaviour
         {
             HitPlayer.Play();
             m_animatorVisual.SetTrigger("isHit");
-            SceneManager.LoadScene("Start_menu");
+            SceneManager.LoadScene("Game_Over");
         }
     }
 }
