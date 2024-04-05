@@ -11,10 +11,10 @@ public class TimeManager : MonoBehaviour
 
     void Update()
     {
-        Time.timeScale += (1f / slowdownLength) * Time.unscaledDeltaTime;
-        Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f); //Le temps va être entre 0 et 1 maximum pour eviter de speed le jeu au dessus de 1
+       
+                Time.timeScale += (1f / slowdownLength) * Time.unscaledDeltaTime;
+                Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f); //Le temps va être entre 0 et 1 maximum pour eviter de speed le jeu au dessus de 1
     }
-
     public void Slowmotion() // add delay / coroutine bcs we can spam it
     {
         Time.timeScale = slowdownFactor;

@@ -8,6 +8,7 @@ public class PlayerWeapon : MonoBehaviour
 
     [Header("Bullet Setting")]
     public Transform bulletSpawnPoint;
+    public ParticleSystem m_superCharge;
     [SerializeField] private PlayerBulletScript m_bullet;
     [SerializeField] private PlayerBulletScript m_superBullet;
     [SerializeField] private float chargeSpeed = 1f;
@@ -61,6 +62,7 @@ public class PlayerWeapon : MonoBehaviour
 
             if (isCharging && Timedecay < 0)
             {
+               m_superCharge.Play();
                targetOtrhographicSize = 3;
                TimeManager.Slowmotion();
                chargeTime += chargeSpeed * Time.deltaTime;
@@ -76,6 +78,7 @@ public class PlayerWeapon : MonoBehaviour
             }
             else if (chargeTime < chargeNeeded) 
             {
+                m_superCharge.Stop();
                 Timedecay = decay;
                 isCharging = false;
                 chargeTime = 0f;
@@ -98,6 +101,7 @@ public class PlayerWeapon : MonoBehaviour
         supershootAudio.Play();
         isCharging = false;
         chargeTime = 0f;
+        m_superCharge.Stop();
         Timedecay = decay;
         m_camera.orthographicSize = 5;
     }

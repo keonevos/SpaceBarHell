@@ -9,7 +9,12 @@ public class MainMenu : MonoBehaviour
     //trtt
     public void StartGame()
     {
-        SceneManager.LoadScene("Test_Scene");
+        SceneManager.LoadScene("Level 1");
+    }
+
+    public void StartGame2()
+    {
+        SceneManager.LoadScene("Level 2");
     }
 
     public void QuitGame()
